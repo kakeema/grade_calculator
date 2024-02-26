@@ -67,7 +67,9 @@ button {
     border-radius: 12px;
     width: 125px;
     height: 75%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modules {
