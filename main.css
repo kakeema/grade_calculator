@@ -1,0 +1,76 @@
+/* global */
+
+body {
+    background-color: peachpuff;
+    margin: 0; /* remove any default margin set by the browser */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button {
+    border: none; /* removes the black edge */
+    border-radius: 50px; /* makes it more oval shaped the edges */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* allows a transition to happen when hovered must include the :hover for the button. The box-shadow adds a shadow effect to make the button appear, the transform property moves the button slightly upwards. */
+    width: 200px;
+    height: 50px;
+}
+
+/* Buttons */
+.calculate-button button{
+    background-color: #82c6f7;
+    color: white;
+}
+.modules button{
+    background-color: #def1fd;
+    border-radius: 12px; /* Override original buttons property: */
+    color: black;
+}
+
+.calculate-button button:hover {
+    background-color: #6ba8e5; /* Darker shade when hovered */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transform: translateY(-6px); /* Slightly lift the button */
+}
+.modules button:hover {
+    background-color: #c8e0f5; /* Lighter shade when hovered */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transform: translateY(-6px); /* lifts the button when hovered over. */
+}
+
+
+/* containers */
+.main-container {
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    border-radius: 25px;
+}
+
+.total-grade .outer-box {
+    background-color: #82c6f7;
+    width: 300px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+.total-grade .inner-box {  
+    background-color: #def1fd;
+    border-radius: 12px;
+    width: 125px;
+    height: 75%;
+    text-align: center;
+}
+
+.modules {
+    display: flex;
+    flex-direction: column;
+}
