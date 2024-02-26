@@ -38,7 +38,7 @@ body{
 
 .userName,.userPassword{
   text-align: center;
-  border:2px solid black;
+  border:1px solid black;
   margin: rem;
   color: black;
   padding: rem;
@@ -60,7 +60,7 @@ body{
 
 .loginBtn{
   background: transparent;
-  border: 2px solid black;
+  border: 1px solid black;
   background-color: #82c6f7;
   padding: 1rem 3rem;
   border-radius: 6rem;
