@@ -31,7 +31,7 @@ button {
     border: 1px solid black;
     color: white;
 }
-.modules button{
+.add-modules button{
     background-color: #def1fd;
     border-radius: 12px; /* Override original buttons property: */
     color: black;
@@ -42,7 +42,7 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
     transform: translateY(-6px); /* Slightly lift the button */
 }
-.modules button:hover {
+.add-modules button:hover {
     background-color: #c8e0f5; /* Lighter shade when hovered */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
     transform: translateY(-6px); /* lifts the button when hovered over. */
@@ -64,8 +64,6 @@ button {
     overflow: hidden; /* Added overflow, so that the text can no longer overflow the main-container div*/
 }
 
-
-/* classes */
 .total-grade .outer-box {
     background-color: #82c6f7;
     width: 300px;
@@ -89,4 +87,44 @@ button {
 .modules {
     display: flex;
     flex-direction: column;
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.module-header, .module-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-header div, .module-row div{
+    flex: 1;
+    text-align: center;
+}
+
+.add-modules {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* For when a module has been added using JS */
+.module {
+    background-color: #def1fd;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.module-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
 }
