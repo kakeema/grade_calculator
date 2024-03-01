@@ -96,14 +96,13 @@ button {
 
 .module-header, .module-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
 .module-header div, .module-row div{
-    flex: 1;
     text-align: center;
 }
+
 
 .add-modules {
     width: 100%;
@@ -126,4 +125,29 @@ button {
     align-items: center;
     gap: 25px;
     width: 100%;
+}
+
+.module-row input {
+    background-color: #def1fd;
+    border-style: none;
+}
+
+.module-header, .module-row {
+    display: flex;
+    align-items: center;
+}
+
+.module-header div, .module-row div {
+    text-align: center;
+}
+
+.module-header div,
+.module-row div {
+    flex-basis: 100%; /* Adjust the percentage as needed */
+    box-sizing: border-box;
+}
+
+.module-name input {
+    width: 100%; /* Ensures the input takes the full width of its parent */
+    box-sizing: border-box; /* Includes padding and border in the width */
 }
