@@ -3,7 +3,7 @@
 body {
     background-color: peachpuff;
     margin: 0; /* remove any default margin set by the browser */
-    height: 100vh; /* Changed to min-height so that */
+    min-height: 100vh; /* Changed to min-height so that */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,6 @@ button {
     transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* allows a transition to happen when hovered must include the :hover for the button. The box-shadow adds a shadow effect to make the button appear, the transform property moves the button slightly upwards. */
     width: 300px;
     height: 50px;
-
 }
 
 
@@ -56,12 +55,12 @@ button {
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 25px;
     border-radius: 25px;
     box-shadow: 0px 0px 20px 0px black;
-    overflow: hidden; /* Added overflow, so that the text can no longer overflow the main-container div*/
+    overflow: auto; /* Added overflow, so that the text can no longer overflow the main-container div*/
 }
 
 .total-grade .outer-box {
