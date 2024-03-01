@@ -19,7 +19,8 @@ button {
 
 /* Buttons */
 .calculate-button {
-    margin-top: 20px;
+    margin-top: 6px;
+    margin-bottom: 20px;
 }
 .calculate-button button{
     background-color: #82c6f7;
@@ -47,7 +48,7 @@ button {
 /* containers */
 .main-container {
     width: 400px;
-    height: 500px;
+    min-height: 500px;
     background-color: white;
     display: flex;
     flex-direction: column;
