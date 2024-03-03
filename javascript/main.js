@@ -1,8 +1,3 @@
-
-// let moduleName;
-// let currentGrade;
-// let whatIfGrade;
-
 document.addEventListener('DOMContentLoaded', function() { // Event listenr for the DOM
     var addButton = document.querySelector('.modules button');
     var addModulesContainer = document.querySelector(".add-modules");
@@ -39,40 +34,48 @@ function buttonClicked() // + add more button function when it is being clicked 
     `;
 }
 
+//  This function does both calculate average, and assits in adding the module name and grades onto the results page below the percetnage bar circle.
 function calculateAverage() {
     var currentGrades = document.querySelectorAll('.module-grade-current input');
-    var whatIfGrades = document.querySelectorAll('.module-grade-whatif');
+    var moduleNames = document.querySelectorAll('.module-name input'); // Select all module name inputs
     var grades = [];
+    var modulesData = []; // Array to hold the module data
 
-    // Collect all current grades into an array.
-    currentGrades.forEach(function(input) {
-        var grade = parseInt(input.value, 10); // Parse the value as a base-10 integer.
-        if (!isNaN(grade)) { // Check if the parsed value is a number.
+    // Collect all current grades and module names into arrays.
+    for (let i = 0; i < currentGrades.length; i++) {
+        var grade = parseInt(currentGrades[i].value, 10); // Parse the value as a base-10 integer.
+        var name = moduleNames[i].value; // Get the module name from the corresponding input
+        if (!isNaN(grade) && name.trim() !== "") {
             grades.push(grade);
+            modulesData.push({ name: name, percentage: grade }); // Add the module data to the array
         }
-    });
+    }
+
+    // Check if there are at least four modules.  Not sure if this is yet a MUST TO HAVE
+    if (modulesData.length < 4) {
+        alert('Please enter at least four modules.');
+        return;
+    }
 
     // Sorting the grades to find the smallest result.
     grades.sort(function(a, b) {
         return a - b;
     });
 
-    // Check if there are at least four modules. NOTE: I do not know if 4 is the minimum or not, if we are allowed to have 1 single module I will have to change things around for this calculation. 
-    if (grades.length < 4) {
-        alert('Please enter at least four modules.');
-        return;
-    }
-
     // Calculate total value considering half the smallest grade and full of the others.
-    var totalValue = (grades[0] / 2) + grades.slice(1).reduce(function(acc, grade) {
-        return acc + grade;
+    var totalValue = grades.reduce(function(acc, grade, index) {
+        return acc + (index === 0 ? grade / 2 : grade);
     }, 0);
 
-    // Calculate the average.
-    var average = totalValue / 3.5;
+    // Calculating the average.
+    var average = totalValue / (grades.length - 0.5);
 
+    // Saving the modules data to localStorage
+    localStorage.setItem('modulesData', JSON.stringify(modulesData)); // Convert the array to a JSON string
+    
+    // Saving the average grade to localStorage
     localStorage.setItem('averageGrade', average.toFixed(2));
-    window.location.href = 'pages/results.html'; // Make sure this is the correct path to your new results page.
 
-    // Display the result.
+    // Redirecting to results.html
+    window.location.href = 'pages/results.html'; 
 }

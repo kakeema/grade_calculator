@@ -7,20 +7,39 @@
 </head>
 <body>
     <div class="results-container">
-        <h1>University of [Your University Name]</h1>
+        <div class="header-container">
+            <h1>[Your University Name]</h1>
+            <h2 class="track-status">on track</h2>
+        </div>
         <div class="circle-progress-container">
-            <div class="circle-progress" data-percentage="74.5">
-                <svg class="progress-ring" width="120" height="120">
+            <div class="circle-progress">
+                <svg class="progress-ring" width="200" height="200">
                     <!-- Grey background circle -->
-                    <circle class="progress-ring__background" stroke="#ccc" stroke-width="6" fill="transparent" r="52" cx="60" cy="60"/>
+                    <circle class="progress-ring__background" stroke="#ccc" stroke-width="10" fill="transparent" r="80" cx="100" cy="100"/>
                     <!-- Colored foreground circle -->
-                    <circle class="progress-ring__circle" stroke-width="6" fill="transparent" r="52" cx="60" cy="60"/>
+                    <circle class="progress-ring__circle" stroke="#82c6f7" stroke-width="10" fill="transparent" r="80" cx="100" cy="100"/>
                 </svg>
                 <span class="percentage">0%</span>
+                <div class="progress-keys">
+                    <span class="key-left">left</span>
+                    <span class="key-current">current</span>                
+                </div>
             </div>
         </div>
-        <div class="module-averages">
-        
+        <div class="module-breakdown">
+            <div class="module" style="width: 20%;">
+                <span></span>
+            </div>
+            <div class="module" style="width: 30%;">
+                <span></span>
+            </div>
+            <div class="module" style="width: 30%;">
+                <span></span>
+            </div>
+            <div class="module" style="width: 20%;">
+                <span></span>
+            </div>
+        </div>
         <div class="view-grades-btn">
             <button id="viewCalculatedGrades">VIEW CALCULATED GRADES</button>
         </div>

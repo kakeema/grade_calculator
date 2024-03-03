@@ -12,59 +12,111 @@ body {
     text-align: center;
     background-color: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 20px; /* More rounded edges */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Maximum width */
 }
 
-h1 {
-    font-size: 1.5em;
-    color: #333;
+.header-container {
     margin-bottom: 20px;
 }
 
+.header-container h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.header-container h2 {
+    font-size: 1.2em;
+    color: #5cb85c; /* Green color to indicate 'on track' */
+    margin-bottom: 20px;
+}
+
+/* Progress circle */
 .circle-progress-container {
     position: relative;
     margin-bottom: 20px;
 }
 
 .circle-progress {
-    display: inline-block;
-    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto; /* Center in the container */
+    width: 200px;
+    height: 200px;
 }
 
+.progress-ring__background,
 .progress-ring__circle {
     transition: stroke-dashoffset 0.35s;
     transform: rotate(-90deg);
-    transform-origin: 50% 50%;
-    stroke: #82c6f7; /* Change this color to match your desired color */
+    transform-origin: center;
 }
 
+.progress-ring__background {
+    stroke: #eee; /* Lighter grey background */
+}
+
+.progress-ring__circle {
+    stroke: #82c6f7; /* Blue foreground */
+    stroke-width: 10;
+}
+
+/* Average percentage of the grade */
 .percentage {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2em;
-    color: #333; /* Change this color as needed */
+    color: #333;
+}
+
+/* Progress keys (left, current) */
+.progress-keys {
+    display: none; /* Hide these elements as they are not in UI 2 */
 }
 
 
-.average-display {
-    font-size: 2em;
-    margin: 20px 0;
+.module {
+    background-color: #f0f0f0; /* Light grey background */
+    border-radius: 10px; /* Rounded corners for the module entry */
+    padding: 10px; /* Padding inside each module entry */
+    margin: 5px 0; /* Space between each module entry */
+    font-size: 0.9em; /* Slightly smaller font size */
+    font-weight: normal; /* Default font weight */
+    color: #333; /* Dark grey text color */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out the name and percentage */
+    align-items: center; /* Center items vertically */
 }
 
-#viewCalculatedGrades {
+.module span {
+    display: block; /* Ensure the span is a block element */
+}
+
+.module-name {
+    font-weight: bold; /* Make the module name bold */
+}
+
+/* View Calculated Grades Button */
+.view-grades-btn button {
     background-color: #82c6f7;
     color: white;
-    border: none;
     padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 25px; /* Rounded edges */
     font-size: 1em;
     cursor: pointer;
-    outline: none;
+    margin-top: 20px; /* Spacing from the progress circle */
+    border: none; /* No border */
+    width: 80%; /* Responsive width */
+    max-width: 200px; /* Maximum width */
 }
 
-#viewCalculatedGrades:hover {
-    background-color: #6ba8e5;
+.view-grades-btn button:hover {
+    background-color: #6ba8e5; /* Darker blue on hover */
 }
