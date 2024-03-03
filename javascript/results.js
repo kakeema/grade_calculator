@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var circumference = radius * 2 * Math.PI;
     var percentageText = document.querySelector('.percentage'); // Get the percentage text element
 
+    // create the effect of a progress bar in a circle 
     circle.style.strokeDasharray = `${circumference} ${circumference}`;
     circle.style.strokeDashoffset = `${circumference}`;
 
+    // progress for the progressbar
     function setProgress(percent) {
         const offset = circumference - (percent / 100) * circumference;
         circle.style.strokeDashoffset = offset;
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var average = parseFloat(localStorage.getItem('averageGrade'));
     setProgress(average); // Update the progress bar and percentage text
 });
+
 function updateCircleProgress(averageGrade) {
     // Calculate the percentage for the progress bar
     var percentage = (averageGrade / 100) * 100; // Assuming averageGrade ranges from 0 to 100
