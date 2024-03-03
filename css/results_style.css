@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body{
+    background-color: peachpuff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .main-container {
+    width: 400px;
+    min-height: 500px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    justify-content: top;
+    align-items: center;
+    gap: 25px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 20px 0px black;
+    overflow: hidden; /* Added overflow, so that the text can no longer overflow the main-container div*/
+}
+.circle {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #ffffff;
+  }
+  
+  .circle-border {
+    position: relative;
+    text-align: center;
+    width: 110px;
+    height: 110px;
+    margin-left: 30%;
+    border-radius: 100%;
+    background-color: #f0f0f0;
+    background: linear-gradient(100deg, black 50%, transparent 50%), linear-gradient(100deg, black 50%, lightgray 0%)
+  }

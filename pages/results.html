@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculated Grades</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+    <div class="results-container">
+        <h1>Calculated Average Grade</h1>
+        <div id="averageDisplay"></div>
+        <!-- More HTML for styling the results page as needed -->
+    </div>
+    <script>
+        // When the page loads, retrieve the average from localStorage and display it
+        document.addEventListener('DOMContentLoaded', function() {
+            var averageGrade = localStorage.getItem('averageGrade');
+            document.getElementById('averageDisplay').textContent = 'The average grade is: ' + averageGrade + '%';
+            // Clear the average from localStorage if you don't need it anymore
+            localStorage.removeItem('averageGrade');
+        });
+    </script>
+</body>
+</html>

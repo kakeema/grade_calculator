@@ -41,6 +41,7 @@ function buttonClicked() // + add more button function when it is being clicked 
 
 function calculateAverage() {
     var currentGrades = document.querySelectorAll('.module-grade-current input');
+    var whatIfGrades = document.querySelectorAll('.module-grade-whatif');
     var grades = [];
 
     // Collect all current grades into an array.
@@ -70,6 +71,8 @@ function calculateAverage() {
     // Calculate the average.
     var average = totalValue / 3.5;
 
+    localStorage.setItem('averageGrade', average.toFixed(2));
+    window.location.href = 'results.html'; // Make sure this is the correct path to your new results page.
+
     // Display the result.
-    alert('The average grade is: ' + average.toFixed(2));
 }
