@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatitble" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Animated Register Form</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/register.css">
+
+  </head>
+
+  <body>
+
+    <div class="form-container">
+      <h2 class="register-title"> Register</h2>
+      <input type="text" name="familyName" class="userFamilyName" placeholder="familyName">
+      <input type="text" name="givenName" class="userGivenName" placeholder="givenName">
+      <input type="text" name="userName" class="userName" placeholder="username">
+      <input type="password" name="password" class="userPassword" placeholder="password">
+      <input type="email" name="email" class="userEmail" placeholder="email">
+      <button class="registerBtn"> Register </button>
+    </div>
+  </body>
+
+  <script>
+    const familyNameInput = document.querySelector('.userName');
+    const givenNameInput = document.querySelector('.userName');
+    const emailInput = document.querySelector('.userName');
+    const passwordInput = document.querySelector('.userPassword');
+    const loginButton = document.querySelector('.loginBtn');
+
+    loginButton.addEventListener('click', () => {
+      const usernameValue = userNameInput.value.trim();
+      const passwordValue = passwordInput.value.trim();
+      const emailValue = emailInput.value.trim();
+      const familyNameValue = familyNameInput.value.trim();
+      const givenNameValue = givenNameValue.value.trim();
+
+
+      if (usernameValue === '' || passwordValue === '' || emailValue === '' || givenNameValue === '' || familyNameInput === '' ) 
+      {
+        alert('Please enter both username and password');
+        return;
+      }
+      
+    });
+  </script>
+
+</html>
