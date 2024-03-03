@@ -7,13 +7,20 @@
 </head>
 <body>
     <div class="results-container">
-        <h1>[Name of University]</h1>
-        <div class="average-container">
+        <h1>University of [Your University Name]</h1>
+        <div class="circle-progress-container">
             <div class="circle-progress" data-percentage="74.5">
-                <!-- The circle progress bar will be created with CSS and potentially JavaScript -->
+                <svg class="progress-ring" width="120" height="120">
+                    <!-- Grey background circle -->
+                    <circle class="progress-ring__background" stroke="#ccc" stroke-width="6" fill="transparent" r="52" cx="60" cy="60"/>
+                    <!-- Colored foreground circle -->
+                    <circle class="progress-ring__circle" stroke-width="6" fill="transparent" r="52" cx="60" cy="60"/>
+                </svg>
+                <span class="percentage">0%</span>
             </div>
-            <div id="averageDisplay" class="average-display"></div>
         </div>
+        <div class="module-averages">
+        
         <div class="view-grades-btn">
             <button id="viewCalculatedGrades">VIEW CALCULATED GRADES</button>
         </div>

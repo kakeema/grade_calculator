@@ -22,9 +22,32 @@ h1 {
     margin-bottom: 20px;
 }
 
-.circle-progress {
-    /* You'll need to create the circular progress bar using CSS or a JavaScript library */
+.circle-progress-container {
+    position: relative;
+    margin-bottom: 20px;
 }
+
+.circle-progress {
+    display: inline-block;
+    margin: 10px;
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke: #82c6f7; /* Change this color to match your desired color */
+}
+
+.percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    color: #333; /* Change this color as needed */
+}
+
 
 .average-display {
     font-size: 2em;
