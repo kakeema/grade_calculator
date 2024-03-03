@@ -72,7 +72,7 @@ function calculateAverage() {
     var average = totalValue / 3.5;
 
     localStorage.setItem('averageGrade', average.toFixed(2));
-    window.location.href = 'results.html'; // Make sure this is the correct path to your new results page.
+    window.location.href = 'pages/results.html'; // Make sure this is the correct path to your new results page.
 
     // Display the result.
 }

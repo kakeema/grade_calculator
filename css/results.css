@@ -1,0 +1,47 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: peachpuff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.results-container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.circle-progress {
+    /* You'll need to create the circular progress bar using CSS or a JavaScript library */
+}
+
+.average-display {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+#viewCalculatedGrades {
+    background-color: #82c6f7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    outline: none;
+}
+
+#viewCalculatedGrades:hover {
+    background-color: #6ba8e5;
+}

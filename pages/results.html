@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculated Grades</title>
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/results.css">
 </head>
 <body>
     <div class="results-container">
-        <h1>Calculated Average Grade</h1>
-        <div id="averageDisplay"></div>
-        <!-- More HTML for styling the results page as needed -->
+        <h1>[Name of University]</h1>
+        <div class="average-container">
+            <div class="circle-progress" data-percentage="74.5">
+                <!-- The circle progress bar will be created with CSS and potentially JavaScript -->
+            </div>
+            <div id="averageDisplay" class="average-display"></div>
+        </div>
+        <div class="view-grades-btn">
+            <button id="viewCalculatedGrades">VIEW CALCULATED GRADES</button>
+        </div>
     </div>
-    <script>
-        // When the page loads, retrieve the average from localStorage and display it
-        document.addEventListener('DOMContentLoaded', function() {
-            var averageGrade = localStorage.getItem('averageGrade');
-            document.getElementById('averageDisplay').textContent = 'The average grade is: ' + averageGrade + '%';
-            // Clear the average from localStorage if you don't need it anymore
-            localStorage.removeItem('averageGrade');
-        });
-    </script>
+    <script src="../javascript/results.js"></script>
 </body>
 </html>
