@@ -40,7 +40,7 @@ function calculateAverage() {
     var moduleNames = document.querySelectorAll('.module-name input'); // Select all module name inputs
     var grades = [];
     var modulesData = []; // Array to hold the module data
-    var allFieldsValid  = true; // Validation flag
+    var isValid = true; // Validation flag
     var modules = document.querySelectorAll('.module'); // Select all module elements
 
     if (modules.length === 0) {
@@ -54,45 +54,36 @@ function calculateAverage() {
     //     return;
     // }
 
-      // Check for empty module names and non-numeric grade values
+     // Loop through all modules and grades to validate
     for (let i = 0; i < currentGrades.length; i++) {
-        var gradeValue = currentGrades[i].value.trim();
-        var moduleName = moduleNames[i].value.trim();
-        var gradeIsNumber = !isNaN(gradeValue) && gradeValue !== "";
-        
-        // Validate module name
-        if (!moduleName) {
-            moduleNames[i].classList.add('error');
-            allFieldsValid = false;
+        var gradeInput = currentGrades[i];
+        var moduleNameInput = moduleNames[i];
+        var grade = parseFloat(gradeInput.value);
+        var moduleName = moduleNameInput.value.trim();
+
+        // Check if the module name is empty
+        if (moduleName === '') {
+            isValid = false;
+            moduleNameInput.classList.add('error');
         } else {
-            moduleNames[i].classList.remove('error');
+            moduleNameInput.classList.remove('error');
         }
 
-        // Validate grade value
-        if (!gradeIsNumber) {
-            currentGrades[i].classList.add('error');
-            allFieldsValid = false;
+        // Check if the grade input is a number
+        if (isNaN(grade) || gradeInput.value === '') {
+            isValid = false;
+            gradeInput.classList.add('error');
         } else {
-            currentGrades[i].classList.remove('error');
-            grades.push(parseFloat(gradeValue));
-            modulesData.push({ name: moduleName, percentage: parseFloat(gradeValue) });
-        }
-    }
-
-    if (!allFieldsValid) {
-        alert('Please ensure all module names are entered and all grades are valid numbers.');
-        return;
-    }
-
-
-    // Collect all current grades and module names into arrays.
-    for (let i = 0; i < currentGrades.length; i++) {
-        var grade = parseInt(currentGrades[i].value, 10); // Parse the value as a base-10 integer.
-        var name = moduleNames[i].value; // Gets the module name from the corresponding input
-        if (!isNaN(grade) && name.trim() !== "") {
+            gradeInput.classList.remove('error');
             grades.push(grade);
-            modulesData.push({ name: name, percentage: grade }); // Adds the module data to the array
+            modulesData.push({ name: moduleName, percentage: grade });     // Collect  current grades and module name into arrays.
         }
+    }
+
+    // If any field is invalid, show an alert and stop the function
+    if (!isValid) {
+        alert("Please enter a valid number for all grade fields and fill out all module names.");
+        return;
     }
 
     // Sorting the grades to find the smallest result.
