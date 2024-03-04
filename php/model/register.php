@@ -20,9 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Execute the query
         $stmt->execute([$userName, $givenName, $familyName, $email, $hashed_password]);
-
-        echo "New record created successfully";
-        header('Location: success_page.php'); // Redirect to a success page
+        echo "<script>alert('New record created successfully'); window.location.href='../../pages/login-page.html';</script>";
         exit();
 
     } catch(Exception $e) {
@@ -30,4 +28,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
