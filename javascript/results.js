@@ -11,6 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const offset = circumference - (percent / 100) * circumference;
         circle.style.strokeDashoffset = offset;
         percentageText.textContent = `${percent.toFixed(2)}%`;
+
+        // track-status section:
+        var trackStatus = document.querySelector('.track-status');
+
+        // Set the track-status text based on the average grade
+        if (percent >= 70) {
+            trackStatus.textContent = 'on track';
+            trackStatus.style.color = '#5cb85c'; // Green color if on track
+        } else {
+            trackStatus.textContent = 'below track';
+            trackStatus.style.color = '#d9534f'; // Red color if below track
+        }
     }
 
     var average = parseFloat(localStorage.getItem('averageGrade'));
