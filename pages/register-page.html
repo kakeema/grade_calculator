@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatitble" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Animated Register Form</title>
+    <title>Register page</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/register.css">
-
   </head>
 
   <body>
 
     <div class="form-container">
-      <h2 class="register-title"> Register</h2>
-      <input type="text" name="familyName" class="userFamilyName" placeholder="familyName">
-      <input type="text" name="givenName" class="userGivenName" placeholder="givenName">
-      <input type="text" name="userName" class="userName" placeholder="username">
-      <input type="password" name="password" class="userPassword" placeholder="password">
-      <input type="email" name="email" class="userEmail" placeholder="email">
-      <button class="registerBtn"> Register </button>
+      <form action="../php/model/register.php" method="post"> <!-- Form element with action pointing to your PHP script -->
+        <h2 class="register-title">Register</h2>
+        <input type="text" name="familyName" class="userFamilyName" placeholder="Family Name" required>
+        <input type="text" name="givenName" class="userGivenName" placeholder="Given Name" required>
+        <input type="text" name="userName" class="userName" placeholder="Username" required>
+        <input type="password" name="password" class="userPassword" placeholder="Password" required>
+        <input type="email" name="email" class="userEmail" placeholder="Email" required>
+
+        <button type="submit" class="registerBtn"> Register </button>
+      </form>
     </div>
   </body>
 
-  <script>
+  <!-- <script>
     const familyNameInput = document.querySelector('.userName');
     const givenNameInput = document.querySelector('.userName');
     const emailInput = document.querySelector('.userName');
@@ -46,6 +47,5 @@
       }
       
     });
-  </script>
-
+  </script> -->
 </html>
