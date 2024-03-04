@@ -40,7 +40,7 @@ function calculateAverage() {
     var moduleNames = document.querySelectorAll('.module-name input'); // Select all module name inputs
     var grades = [];
     var modulesData = []; // Array to hold the module data
-    var isValid = true; // Validation flag
+    var allFieldsValid  = true; // Validation flag
     var modules = document.querySelectorAll('.module'); // Select all module elements
 
     if (modules.length === 0) {

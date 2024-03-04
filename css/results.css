@@ -11,11 +11,12 @@ body {
 .results-container {
     text-align: center;
     background-color: white;
-    padding: 20px;
+    padding: 60px 20px;
     border-radius: 20px; /* More rounded edges */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 90%; /* Responsive width */
     max-width: 400px; /* Maximum width */
+
 }
 
 .header-container {
@@ -88,6 +89,9 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
+    max-height: 300px;
+    overflow-y: auto; /* Add vertical scroll */
+    padding: 0 10px;
 }
 
 .module {
