@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function populateModules(modulesData) {
     var moduleContainer = document.querySelector('.module-breakdown');
-    moduleContainer.innerHTML = ''; // Clear existing modules before adding new ones
+    moduleContainer.innerHTML = ''; // Clears existing modules before adding new ones
 
     modulesData.forEach(function(module) {
-        // Create a container for each module with percentage underneath
+        // Creates a container for each module with percentage underneath
         var moduleDiv = document.createElement('div');
         var moduleNameDiv = document.createElement('div'); // Container for the module name
         var modulePercentageDiv = document.createElement('div'); // Container for the percentage
@@ -45,29 +45,28 @@ function populateModules(modulesData) {
         moduleNameDiv.textContent = module.name;
         modulePercentageDiv.textContent = `${module.percentage}%`;
 
-        // Append module name and percentage to the module container
+        // Appends module name and percentage to the module container
         moduleDiv.appendChild(moduleNameDiv);
         moduleDiv.appendChild(modulePercentageDiv);
         moduleDiv.classList.add('module');
 
-        // Append the module container to the parent
+        // Appends the module container to the parent
         moduleContainer.appendChild(moduleDiv);
     });
 }
 
 
-// module name and grades get reeturned and displayed onto the results page.
+// module name and grades get returned and displayed onto the results page.
 function getModulesData() {
     const storedModules = localStorage.getItem('modulesData');
     if (storedModules) {
-        return JSON.parse(storedModules); // Parsing the JSON string back into an array of objects
+        return JSON.parse(storedModules); // Parses the JSON string back into an array of objects
     }
-    // Returns an empty array if there are no stored modules
-    return [];
+    return [];  // Returns an empty array if there are no stored modules
 }
 
 function updateCircleProgress(averageGrade) {
-    // Calculate the percentage for the progress bar
+    // Calculates the percentage for the progress bar
     var percentage = (averageGrade / 100) * 100;
 
     // Sets the stroke-dasharray value based on the percentage

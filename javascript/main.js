@@ -45,7 +45,7 @@ function calculateAverage() {
 
     if (modules.length === 0) {
         alert('Please add at least one module.');
-        return; // Exit the function if no modules are present
+        return; // Exit the function
     }
 
     // Check if there are at least four modules.  Not sure if this is yet a MUST TO HAVE
@@ -53,32 +53,45 @@ function calculateAverage() {
     //     alert('Please enter at least four modules.');
     //     return;
     // }
-    
-     // Check for empty inputs and set the flag to false if found
-    currentGrades.forEach((input, index) => {
-        if (!input.value || !moduleNames[index].value) {
-            isValid = false;
-            input.classList.add('error'); // Add error class to highlight empty fields
-            moduleNames[index].classList.add('error');
-        } else {
-            input.classList.remove('error'); // Remove error class if input is filled
-            moduleNames[index].classList.remove('error');
-        }
-    });
 
-    if (!isValid) {
-        alert('Please fill out the module and grades fields.');
-        return; // Exit the function if validation fails
+      // Check for empty module names and non-numeric grade values
+    for (let i = 0; i < currentGrades.length; i++) {
+        var gradeValue = currentGrades[i].value.trim();
+        var moduleName = moduleNames[i].value.trim();
+        var gradeIsNumber = !isNaN(gradeValue) && gradeValue !== "";
+        
+        // Validate module name
+        if (!moduleName) {
+            moduleNames[i].classList.add('error');
+            allFieldsValid = false;
+        } else {
+            moduleNames[i].classList.remove('error');
+        }
+
+        // Validate grade value
+        if (!gradeIsNumber) {
+            currentGrades[i].classList.add('error');
+            allFieldsValid = false;
+        } else {
+            currentGrades[i].classList.remove('error');
+            grades.push(parseFloat(gradeValue));
+            modulesData.push({ name: moduleName, percentage: parseFloat(gradeValue) });
+        }
+    }
+
+    if (!allFieldsValid) {
+        alert('Please ensure all module names are entered and all grades are valid numbers.');
+        return;
     }
 
 
     // Collect all current grades and module names into arrays.
     for (let i = 0; i < currentGrades.length; i++) {
         var grade = parseInt(currentGrades[i].value, 10); // Parse the value as a base-10 integer.
-        var name = moduleNames[i].value; // Get the module name from the corresponding input
+        var name = moduleNames[i].value; // Gets the module name from the corresponding input
         if (!isNaN(grade) && name.trim() !== "") {
             grades.push(grade);
-            modulesData.push({ name: name, percentage: grade }); // Add the module data to the array
+            modulesData.push({ name: name, percentage: grade }); // Adds the module data to the array
         }
     }
 
@@ -87,7 +100,7 @@ function calculateAverage() {
         return a - b;
     });
 
-    // Calculate total value considering half the smallest grade and full of the others.
+    // Calculate total value, half the smallest grade and full for the other grades.
     var totalValue = grades.reduce(function(acc, grade, index) {
         return acc + (index === 0 ? grade / 2 : grade);
     }, 0);

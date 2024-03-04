@@ -143,7 +143,7 @@ button {
 
 .module-header div,
 .module-row div {
-    flex-basis: 100%; /* Adjust the percentage as needed */
+    flex-basis: 100%;
     box-sizing: border-box;
 }
 

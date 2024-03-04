@@ -45,7 +45,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: auto; /* Center in the container */
+    margin: auto; /* Centers in the container */
     width: 200px;
     height: 200px;
 }
@@ -58,7 +58,7 @@ body {
 }
 
 .progress-ring__background {
-    stroke: #eee; /* Lighter grey background */
+    stroke: #eee;
 }
 
 .progress-ring__circle {
@@ -86,16 +86,16 @@ body {
 .module-breakdown {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* This will give space between each module */
-    gap: 10px; /* This provides space between rows and columns */
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .module {
-    padding: 10px; /* Padding inside each module*/
-    margin-bottom: 10px; /* Space between each module*/
+    padding: 10px;
+    margin-bottom: 10px;
     width: calc(50% - 10px); /* Calculate width for 2 columns, minus gap *, allows for 2 module on each row */
     box-sizing: border-box; /* Border and padding are included in the width, allows for them to not only appear on the left side but also on the right side of the container*/
-    text-align: center; /* Center text inside the module */
+    text-align: center;
 }
 
 .module > div:first-child {
@@ -108,15 +108,15 @@ body {
     background-color: #82c6f7;
     color: white;
     padding: 10px 20px;
-    border-radius: 25px; /* Rounded edges */
+    border-radius: 25px;
     font-size: 1em;
     cursor: pointer;
-    margin-top: 20px; /* Spacing from the progress circle */
-    border: none; /* No border */
-    width: 80%; /* Responsive width */
-    max-width: 200px; /* Maximum width */
+    margin-top: 20px;
+    border: none;
+    width: 80%;
+    max-width: 200px;
 }
 
 .view-grades-btn button:hover {
-    background-color: #6ba8e5; /* Darker blue on hover */
+    background-color: #6ba8e5;
 }
