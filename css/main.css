@@ -1,7 +1,7 @@
 /* global */
 
 body {
-    background-color: peachpuff;
+    background-color: #F0C3C0;
     margin: 0; /* remove any default margin set by the browser */
     min-height: 100vh; /* Changed to min-height so that */
     display: flex;
