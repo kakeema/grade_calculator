@@ -82,25 +82,24 @@ body {
 }
 
 
+/* Modules and grades of the module section */
+.module-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* This will give space between each module */
+    gap: 10px; /* This provides space between rows and columns */
+}
+
 .module {
-    background-color: #f0f0f0; /* Light grey background */
-    border-radius: 10px; /* Rounded corners for the module entry */
-    padding: 10px; /* Padding inside each module entry */
-    margin: 5px 0; /* Space between each module entry */
-    font-size: 0.9em; /* Slightly smaller font size */
-    font-weight: normal; /* Default font weight */
-    color: #333; /* Dark grey text color */
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out the name and percentage */
-    align-items: center; /* Center items vertically */
+    padding: 10px; /* Padding inside each module*/
+    margin-bottom: 10px; /* Space between each module*/
+    width: calc(50% - 10px); /* Calculate width for 2 columns, minus gap *, allows for 2 module on each row */
+    box-sizing: border-box; /* Border and padding are included in the width, allows for them to not only appear on the left side but also on the right side of the container*/
+    text-align: center; /* Center text inside the module */
 }
 
-.module span {
-    display: block; /* Ensure the span is a block element */
-}
-
-.module-name {
-    font-weight: bold; /* Make the module name bold */
+.module > div:first-child {
+    margin-bottom: 5px; /* Space between module name and percentage */
 }
 
 /* View Calculated Grades Button */

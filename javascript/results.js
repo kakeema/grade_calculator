@@ -25,19 +25,24 @@ function populateModules(modulesData) {
     moduleContainer.innerHTML = ''; // Clear existing modules before adding new ones
 
     modulesData.forEach(function(module) {
+        // Create a container for each module with percentage underneath
         var moduleDiv = document.createElement('div');
-        var moduleNameSpan = document.createElement('span');
-        var modulePercentageSpan = document.createElement('span');
-        moduleNameSpan.textContent = module.name;
-        modulePercentageSpan.textContent = ` ${module.percentage}%`;
+        var moduleNameDiv = document.createElement('div'); // Container for the module name
+        var modulePercentageDiv = document.createElement('div'); // Container for the percentage
 
-        moduleDiv.appendChild(moduleNameSpan);
-        moduleDiv.appendChild(modulePercentageSpan);
+        moduleNameDiv.textContent = module.name;
+        modulePercentageDiv.textContent = `${module.percentage}%`;
+
+        // Append module name and percentage to the module container
+        moduleDiv.appendChild(moduleNameDiv);
+        moduleDiv.appendChild(modulePercentageDiv);
         moduleDiv.classList.add('module');
 
+        // Append the module container to the parent
         moduleContainer.appendChild(moduleDiv);
     });
 }
+
 
 // module name and grades get reeturned and displayed onto the results page.
 function getModulesData() {
