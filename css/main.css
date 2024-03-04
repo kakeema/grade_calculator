@@ -151,3 +151,7 @@ button {
     width: 100%; /* Ensures the input takes the full width of its parent */
     box-sizing: border-box; /* Includes padding and border in the width */
 }
+
+.error {
+    border: 2px solid red; /* or any other style you prefer */
+}

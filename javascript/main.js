@@ -21,10 +21,10 @@ function buttonClicked() // + add more button function when it is being clicked 
     <div class="module">
         <div class="module-row">
             <div class="module-name">
-                <input type="text" placeholder="New Module">
+                <input type="text" placeholder="New Module" required>
             </div>
             <div class="module-grade-current">
-                <input type="number" placeholder="current" min="0" max="100">
+                <input type="number" placeholder="current" min="0" max="100" required>
             </div>  
             <div class="module-grade-whatif">
                 <input type="number" placeholder="what if" min="0" max="100">
@@ -40,6 +40,37 @@ function calculateAverage() {
     var moduleNames = document.querySelectorAll('.module-name input'); // Select all module name inputs
     var grades = [];
     var modulesData = []; // Array to hold the module data
+    var isValid = true; // Validation flag
+    var modules = document.querySelectorAll('.module'); // Select all module elements
+
+    if (modules.length === 0) {
+        alert('Please add at least one module.');
+        return; // Exit the function if no modules are present
+    }
+
+    // Check if there are at least four modules.  Not sure if this is yet a MUST TO HAVE
+    // if (modulesData.length < 4) {
+    //     alert('Please enter at least four modules.');
+    //     return;
+    // }
+    
+     // Check for empty inputs and set the flag to false if found
+    currentGrades.forEach((input, index) => {
+        if (!input.value || !moduleNames[index].value) {
+            isValid = false;
+            input.classList.add('error'); // Add error class to highlight empty fields
+            moduleNames[index].classList.add('error');
+        } else {
+            input.classList.remove('error'); // Remove error class if input is filled
+            moduleNames[index].classList.remove('error');
+        }
+    });
+
+    if (!isValid) {
+        alert('Please fill out the module and grades fields.');
+        return; // Exit the function if validation fails
+    }
+
 
     // Collect all current grades and module names into arrays.
     for (let i = 0; i < currentGrades.length; i++) {
@@ -49,12 +80,6 @@ function calculateAverage() {
             grades.push(grade);
             modulesData.push({ name: name, percentage: grade }); // Add the module data to the array
         }
-    }
-
-    // Check if there are at least four modules.  Not sure if this is yet a MUST TO HAVE
-    if (modulesData.length < 4) {
-        alert('Please enter at least four modules.');
-        return;
     }
 
     // Sorting the grades to find the smallest result.
