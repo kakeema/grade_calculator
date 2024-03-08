@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatitble" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register page</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/register.css">
   </head>
 
   <body>
 
     <div class="form-container">
-      <form action="../php/model/register.php" method="post"> <!-- Form element with action pointing to your PHP script -->
-        <h2 class="register-title">Register</h2>
+      <form action="../php/model/register.php" method="post">
+        <h2 class="register-title">Create Account</h2>
         <input type="text" name="familyName" class="userFamilyName" placeholder="Family Name" required>
         <input type="text" name="givenName" class="userGivenName" placeholder="Given Name" required>
         <input type="text" name="userName" class="userName" placeholder="Username" required>
@@ -24,28 +23,4 @@
       </form>
     </div>
   </body>
-
-  <!-- <script>
-    const familyNameInput = document.querySelector('.userName');
-    const givenNameInput = document.querySelector('.userName');
-    const emailInput = document.querySelector('.userName');
-    const passwordInput = document.querySelector('.userPassword');
-    const loginButton = document.querySelector('.loginBtn');
-
-    loginButton.addEventListener('click', () => {
-      const usernameValue = userNameInput.value.trim();
-      const passwordValue = passwordInput.value.trim();
-      const emailValue = emailInput.value.trim();
-      const familyNameValue = familyNameInput.value.trim();
-      const givenNameValue = givenNameValue.value.trim();
-
-
-      if (usernameValue === '' || passwordValue === '' || emailValue === '' || givenNameValue === '' || familyNameInput === '' ) 
-      {
-        alert('Please enter both username and password');
-        return;
-      }
-      
-    });
-  </script> -->
 </html>
