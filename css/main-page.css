@@ -43,7 +43,7 @@ body {
     box-shadow: 0px 0px 20px 0px black;
   }
 
-  button {
+  .sign-upBtn {
     background-color: white;
     padding: 10px 50px;
     margin: 5px;
@@ -51,7 +51,24 @@ body {
     border: none;
     font-size: 1rem;
     font-weight: bolder;
-    color: black;
+    color: #7CBAF4;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    width: 300px;
+    align-self: center; 
+  }
+
+  .GuestBtn{
+    background-color: #7CBAF4; 
+    padding: 10px 50px;
+    margin: 5px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: white;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: white;
     font-weight: bold;
     cursor: pointer;
     transition: all .3s ease-in-out;
