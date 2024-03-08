@@ -9,8 +9,8 @@
   </head>
 
   <body>
+    <form action="../php/model/login.php" method="post"> <!-- Update the action path accordingly -->
     <div class="form-container">
-      <form action="../php/model/login.php" method="post"> <!-- Update the action path accordingly -->
         <h2 class="login-title">Login</h2>
         <input type="text" name="userName" class="userName" placeholder="Username" required>
         <input type="password" name="password" class="userPassword" placeholder="Password" required>
@@ -18,21 +18,4 @@
       </form>
     </div>
   </body>
-  <!-- <script>
-    const userNameInput = document.querySelector('.userName');
-    const passwordInput = document.querySelector('.userPassword');
-    const loginButton = document.querySelector('.loginBtn');
-
-    loginButton.addEventListener('click', () => {
-      const usernameValue = userNameInput.value.trim();
-      const passwordValue = passwordInput.value.trim();
-
-      if (usernameValue === '' || passwordValue === '') {
-        alert('Please enter both username and password');
-        return;
-      }
-      
-    });
-  </script> -->
-
 </html>

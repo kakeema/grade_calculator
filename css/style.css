@@ -39,9 +39,9 @@ body{
 .userName,.userPassword{
   text-align: center;
   border:1px solid black;
-  margin: rem;
+  margin: 1rem;
+  padding: 10px;
   color: black;
-  padding: rem;
   border-radius: 3rem;
   width: 15rem;
   font-size: 1.2rem;
