@@ -22,10 +22,10 @@ body{
     background-color: #7CBAF4;
     color: black;
     gap: 20px;
-    width: 90%;
+    width: 70%;
     max-width: 500px; /* Maximum width for larger screens */
     border-radius: 10px;
-    padding: 3em 1em;
+    padding: 3em 0;
     box-shadow: 0px 0px 20px 0px black;
     text-align: center;
 }
@@ -44,7 +44,7 @@ h1, p {
 .sign-up-btn, .continue-guest-btn {
     background-color: #ffffff;
     border: none;
-    border-radius: 25px;
+    border-radius: 12px;
     padding: 15px 30px;
     margin: 10px 0;
     font-size: 18px;
@@ -52,19 +52,30 @@ h1, p {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+.sign-up-btn {
+    color: #7CBAF4;
+}
 .sign-up-btn:hover {
     background-color: #e0e0e0; 
 }
 
 .continue-guest-btn {
     color: #ffffff;
-    background-color: #007bff; 
+    background-color: #7CBAF4; 
+    border: 2px solid white; /* Added white border */
 }
 
 .continue-guest-btn:hover {
     background-color: #0056b3;
+    border-color: white; /* Added for consistency */
 }
+
+
+.continue-guest-btn-link, .signin-btn-link {
+    text-decoration: none; /* Removes any underline from links */
+    width: 100%;
+}
+
 
 /* Social login icon */
 .social-login {
