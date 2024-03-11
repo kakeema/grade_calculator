@@ -3,9 +3,144 @@
 body {
     background-color: #F0C3C0;
     margin: 0; /* remove any default margin set by the browser */
-    min-height: 100vh; /* Changed to min-height so that */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px 0 20px 0; /* Added this padding in the case that a user adds a bunch of modules increasing the height of the main-container div, this padding allows for there to always be space between the top of the window and bottom of the window*/
+    font-family: 'Poppins', sans-serif;
 }
+
+/* Local */
+.main-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 600px; /* max-width for larger devices */
+    border-radius: 20px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* subtle shadow */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    overflow: hidden; /* this ensures nothing spills out of the border-radius */
+    flex-direction: column;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.logo {
+    /* logo dimensions here */
+    height: 50px;
+}
+
+.nav-icons {
+    /* navigation icons */
+}
+
+/* Welcome Section Styles */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.welcome-section h1 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+.welcome-section p {
+    margin-bottom: 1em;
+}
+
+/* Dynamic content, styles for predicted grade */
+.predicted-grade {
+    font-size: 4em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* Performance Graph Section - Placeholder for PHP generated content */
+.performance-graph {
+    background-color: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    /* Placeholder for the graph bars */
+}
+
+.graph-bar-placeholder {
+    background-color: #e6e6e6;
+    height: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+/* Past Grades Section, this is a placeholder for PHP generated content */
+.past-grades {
+    background-color: #ffffff;
+    border: 1px solid #e6e6e6; /* Light border for the table container */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 60px; /* increased to give space for fixed bottom-nav */
+}
+
+/* Table styles */
+.grades-table {
+    width: 100%; /* Ensure table fills the container */
+    border-collapse: collapse; /* Remove space between cells */
+    margin-top: 20px; /* Space between title and table */
+}
+
+.grades-table th,
+.grades-table td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.bottom-nav {
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+.bottom-nav a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Individual navigation button styles */
+.bottom-nav button {
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 1em;
+    color: #333;
+    cursor: pointer;
+}
+
+.bottom-nav button.active {
+    border-top: 2px solid #333;
+}
+
+/* Ensuring the main-container fits within the viewport correctly */
+.main-container {
+    margin-top: 60px; 
+    margin-bottom: 60px;
+}
+
+/* Style adjustments for mobile devices if needed later */
+/* @media (max-width: 768px) {
+    .bottom-nav {
+
+    }
+} */

@@ -3,12 +3,48 @@
     <head>
         <meta charset="UTF-8">
         <title>Grade Calculator</title>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/user-information-page.css">
     </head>
     <body>
         <div class="main-container">
-        
+            <!-- Header -->
+            <header class="header">
+                <img src="../images/logo.png" alt="GraduLator Logo" class="logo">
+                <div class="nav-icons">
+                </div>
+            </header>
+
+            <section class="welcome-section">
+                <h1>Welcome back [name]</h1>
+                <p>This year you're on track for a:</p>
+                <div class="predicted-grade">1:0</div>
+            </section>
+
+            <!-- Performance graph section -->
+            <section class="performance-graph">
+                <!-- Graph will be implemented here -->
+            </section>
+
+            <!-- Past grades section -->
+            <section class="past-grades">
+                <table class="grades-table">
+                </table>
+            </section>
+
+            <!-- Navigation Bar -->
+            <nav class="bottom-nav">
+                <!-- Navigation buttons will be added here -->
+                <div class="track">
+                    Track
+                </div> 
+                <div class="home">
+                    <a href="welcome-page.html">Home</a>
+                </div> 
+                <div class="calculate">
+                    <a href="../index.html">Calculate</a>
+                </div> 
+            </nav>
         </div>
-        <script src="javascript/main.js"></script>      <!-- Adding this at the bottom otherwise some js code will not work since script is loading before html, such as query selector -->
+        <!-- <script src=""></script> -->
     </body>
 </html>
