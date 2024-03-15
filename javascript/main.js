@@ -26,8 +26,8 @@ function buttonClicked() // + add more button function when it is being clicked 
             <div class="module-grade-current">
                 <input type="number" placeholder="current" min="0" max="100" required>
             </div>  
-            <div class="module-grade-whatif">
-                <input type="number" placeholder="what if" min="0" max="100">
+            <div class="module-grade-weight">
+                <input type="number" placeholder="weight" min="0" max="100">
             </div>
         </div>
     </div>

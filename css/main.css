@@ -73,7 +73,7 @@ button {
     align-items: center;
     gap: 12px;
 }
-.total-grade .inner-box {  
+/* .total-grade .inner-box {  
     background-color: #def1fd;
     border-radius: 12px;
     width: 125px;
@@ -81,7 +81,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .modules {
     display: flex;
@@ -154,4 +154,9 @@ button {
 
 .error {
     border: 2px solid red; /* or any other style you prefer */
+}
+
+.module-grade-weight input, .module-grade-current input {
+    border: 1px solid black;
+    border-radius: 25px;
 }
