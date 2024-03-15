@@ -50,7 +50,6 @@ h1, p {
     font-size: 18px;
     width: 80%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 .sign-up-btn {
     color: #7CBAF4;
@@ -62,7 +61,7 @@ h1, p {
 .continue-guest-btn {
     color: #ffffff;
     background-color: #7CBAF4; 
-    border: 2px solid white; /* Added white border */
+    border: 2px solid white;
 }
 
 .continue-guest-btn:hover {
@@ -72,20 +71,11 @@ h1, p {
 
 
 .continue-guest-btn-link, .signin-btn-link {
-    text-decoration: none; /* Removes any underline from links */
+    text-decoration: none; 
     width: 100%;
 }
 
-
-/* Social login icon */
-.social-login {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    width: 100%;
-}
-
-.google-icon {
-    max-width: 50px;
-    margin-top: 10px;
+.logo {
+    border-radius: 25px;
+    max-width: 50%;
 }

@@ -80,3 +80,12 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-6px);
 }
+
+.image {
+  display: flex;
+  justify-content: center;
+}
+.logo {
+  border-radius: 25px;
+  max-width: 50%;
+}
