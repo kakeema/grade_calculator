@@ -25,23 +25,24 @@ button {
     margin-top: 6px;
     margin-bottom: 20px;
 }
-.calculate-button button{
+.calculate-button button, .add-modules-button button{
     background-color: #82c6f7;
     border: 1px solid black;
     color: white;
 }
-.add-modules button{
+
+.add-more button{
     background-color: #def1fd;
     border-radius: 12px; /* Override original buttons property: */
     color: black;
 }
 
-.calculate-button button:hover {
+.calculate-button button:hover, .add-modules-button button:hover {
     background-color: #6ba8e5; /* Darker shade when hovered */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
     transform: translateY(-6px); /* Slightly lift the button */
 }
-.add-modules button:hover {
+.add-more button:hover {
     background-color: #c8e0f5; /* Lighter shade when hovered */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
     transform: translateY(-6px); /* lifts the button when hovered over. */
@@ -73,15 +74,6 @@ button {
     align-items: center;
     gap: 12px;
 }
-/* .total-grade .inner-box {  
-    background-color: #def1fd;
-    border-radius: 12px;
-    width: 125px;
-    height: 75%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
 .modules {
     display: flex;
@@ -104,7 +96,7 @@ button {
 }
 
 
-.add-modules {
+.add-more {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -156,7 +148,7 @@ button {
     border: 2px solid red; /* or any other style you prefer */
 }
 
-.module-grade-weight input, .module-grade-current input {
+.module-grade-weight input{
     border: 1px solid black;
     border-radius: 25px;
 }

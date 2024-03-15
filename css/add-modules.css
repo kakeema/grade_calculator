@@ -1,0 +1,67 @@
+body {
+    background-color: #F0C3C0;
+    margin: 0; /* remove any default margin set by the browser */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 20px 0; /* Added this padding in the case that a user adds a bunch of modules increasing the height of the main-container div, this padding allows for there to always be space between the top of the window and bottom of the window*/
+}
+
+.main-container {
+    width: 400px;
+    min-height: 500px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 20px 0px black;
+    overflow: auto; /* Added overflow, so that the text can no longer overflow the main-container div*/
+}
+
+.add-more {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.calculate-button {
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+.calculate-button button{
+    background-color: #82c6f7;
+    border: 1px solid black;
+    color: white;
+}
+
+.add-more button{
+    background-color: #def1fd;
+    border-radius: 12px; /* Override original buttons property: */
+    color: black;
+}
+
+.calculate-button button:hover, .add-modules-button button:hover {
+    background-color: #6ba8e5; /* Darker shade when hovered */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transform: translateY(-6px); /* Slightly lift the button */
+}
+.add-more button:hover {
+    background-color: #c8e0f5; /* Lighter shade when hovered */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transform: translateY(-6px); /* lifts the button when hovered over. */
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+}
+.logo {
+    border-radius: 25px;
+    max-width: 50%;
+}
+  
