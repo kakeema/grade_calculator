@@ -76,9 +76,16 @@ function calculateAverage() {
         if (moduleName === '') {
             isValid = false;
             moduleNameInput.classList.add('error');
-        } else {
+        } else if (grade > 100) {
+            isValid = false;
+            gradeInput.classList.add('error');
+            alert('Grade value cannot exceed 100.');
+            break; // Break out of the loop if any grade is above 100
+        }
+        else {
             moduleNameInput.classList.remove('error');
         }
+
 
         // Check if the grade input is a number
         if (isNaN(grade) || gradeInput.value === '') {
