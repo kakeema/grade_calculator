@@ -19,29 +19,29 @@ body {
     border-radius: 25px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden; /* Changed to hidden to prevent scroll */
-    padding: 20px; /* Add padding to match the second image */
+    padding: 20px;
 }
 
 .image {
-    margin-top: 20px; /* Add space at the top */
+    margin-top: 20px; 
 }
 
 .logo {
-    border-radius: 50%; /* Change to create a circular logo */
-    max-width: 30%; /* Adjust to match the second image */
-    margin-bottom: 20px; /* Add space below the logo */
+    border-radius: 50%; 
+    max-width: 30%;
+    margin-bottom: 20px;
 }
 
 .module-row,
 .module-name {
     display: flex;
-    background-color: #def1fd; /* Lighter color for the module background */
-    align-items: center; /* Vertically center contents */
-    border-radius: 20px; /* More rounded borders */
-    padding: 10px 15px; /* Adjust padding to match the second image */
-    margin: 5px 0; /* Reduce the space between modules */
-    box-shadow: none; /* Remove the box shadow */
-    border: none; /* Remove borders */
+    background-color: #def1fd; 
+    align-items: center; 
+    border-radius: 20px; 
+    padding: 10px 15px; 
+    margin: 5px 0;
+    box-shadow: none; 
+    border: none; 
 }
 
 .module-name {
@@ -50,12 +50,14 @@ body {
 
 .section input[type="text"],
 .section input[type="number"] {
-    background-color: #f7f7f7; /* Light background for inputs */
-    border: none; /* Remove border */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
-    width: auto; /* Allow inputs to fill available space */
-    flex: 1; /* Flex grow to available space */
-    margin: 0 5px; /* Add some spacing between inputs */
+    background-color: transparent; /* Make the input background transparent */
+    color: black; 
+    box-shadow: none; 
+    width: auto;
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px; 
+    border: none;
 }
 
 .add-section-btn {
@@ -63,21 +65,21 @@ body {
     color: black;
     border-radius: 20px;
     margin-top: 10px;
-    padding: 10px 20px; /* Adjust padding to match the second image */
-    width: auto; /* Set width to auto to allow it to grow */
+    padding: 10px 20px; 
+    width: auto;
     border: none;
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
 
 .calculate-button {
-    width: 100%; /* Full width */
+    width: 100%;
     margin-top: auto; /* Push to the bottom */
 }
 
 .calculate-button button {
     width: 90%; /* Slightly smaller width for the button */
-    background-color: #def1fd; /* Lighter background color */
+    background-color: #def1fd;
     color: black;
     border-radius: 20px;
     padding: 15px;
