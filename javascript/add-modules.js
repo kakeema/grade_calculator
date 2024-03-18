@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     // hard coded for noww
-    const userModules = ['Database', 'Programming', 'Computing Systems', 'PE2'];
+    const userModules = JSON.parse(localStorage.getItem('userModules')) || [];
 
-    // Add the user modules to the page
-    userModules.forEach(moduleName => addModule(moduleName));
-
+    if (userModules.length > 0) {
+        userModules.forEach(moduleName => addModule(moduleName));
+    } 
+    else {
+        // Handle the case where there are no modules (e.g., prompt the user to add some)
+    }
     // Handle clicks on module names to expand/collapse sections
     document.getElementById('modules-container').addEventListener('click', function(e) {
         if (e.target && e.target.matches('.module-name')) {

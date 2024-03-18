@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() { // Event listenr for the DOM
-    var addButton = document.querySelector('.modules button');
+    var addButton = document.querySelector('.add-more button');
     var addMoreContainer = document.querySelector(".add-more");
     var calculateButton = document.querySelector('.calculate-button button');
-    var addModulesButton = document.querySelector('.add-modules-button button');
+    var addModulesButton = document.querySelector('.add-modules-button button'); // This should match the button in your HTML
 
     // Adding the module
     addButton.addEventListener('click', function() { // Event listener for the + add more button, to add modules.
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() { // Event listenr for 
 
     //  Add Modules Button 
     addModulesButton.addEventListener('click', function() {
-        odules();
+        saveModules();
     });
 
 })
@@ -41,10 +41,13 @@ function buttonClicked() // + add more button function when it is being clicked 
     `;
 }
 
-function modules() {
-    window.location.href = 'pages/add-modules-page.html'; 
-
+function saveModules() {
+    const moduleInputs = document.querySelectorAll('.module-name input');
+    const moduleNames = Array.from(moduleInputs).map(input => input.value);
+    localStorage.setItem('userModules', JSON.stringify(moduleNames));
+    window.location.href = 'pages/add-modules-page.html';
 }
+
 //  This function does both calculate average, and assits in adding the module name and grades onto the results page below the percetnage bar circle.
 function calculateAverage() {
     var currentGrades = document.querySelectorAll('.module-grade-current input');
@@ -85,7 +88,6 @@ function calculateAverage() {
         else {
             moduleNameInput.classList.remove('error');
         }
-
 
         // Check if the grade input is a number
         if (isNaN(grade) || gradeInput.value === '') {
