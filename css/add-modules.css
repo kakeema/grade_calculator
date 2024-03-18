@@ -64,4 +64,70 @@ body {
     border-radius: 25px;
     max-width: 50%;
 }
-  
+
+.module-name {
+    background-color: #82c6f7;
+    color: black;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.module-sections {
+    display: none;
+    flex-direction: column;
+}
+
+/* Styles each section within the module */
+.section {
+    background-color: #def1fd;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.section input[type="text"],
+.section input[type="number"] {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: calc(50% - 15px); 
+}
+
+.module-name:hover {
+    background-color: black;
+}
+
+.add-section-btn {
+    background-color: #82c6f7;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calculate-button button {
+    width: 300px;
+    background-color: #82c6f7;
+    color: black;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+    
+.calculate-button button:hover {
+    background-color: #6ba8e5; /* Darker shade for hover */
+}
