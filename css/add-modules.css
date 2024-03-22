@@ -132,7 +132,7 @@ body {
     justify-content: flex-start;
 }
 
-/* Adjust alignment of the titles */
+/* This adjusts the alignment of the titles */
 .title {
     flex: 0 0 25%; 
     display: flex;
@@ -153,4 +153,10 @@ body {
 .module-grade-weight input {
     text-align: left; 
 }
+
+
+.module {
+    margin-bottom: 15px; /* Space between modules */
+}
+
 
