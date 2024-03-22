@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() { // Event listenr for 
     var addMoreContainer = document.querySelector(".add-more");
     var calculateButton = document.querySelector('.calculate-button button');
     var addModulesButton = document.querySelector('.add-modules-button button'); // This should match the button in your HTML
-
+    var calculateButtonFromAddModulesPage = document.querySelector('.calculate-button button');
     // Adding the module
     addButton.addEventListener('click', function() { // Event listener for the + add more button, to add modules.
         var html = buttonClicked();
@@ -61,12 +61,6 @@ function calculateAverage() {
         alert('Please add at least one module.');
         return; // Exit the function
     }
-
-    // Check if there are at least four modules.  Not sure if this is yet a MUST TO HAVE
-    // if (modulesData.length < 4) {
-    //     alert('Please enter at least four modules.');
-    //     return;
-    // }
 
      // Loop through all modules and grades to validate
     for (let i = 0; i < currentGrades.length; i++) {
