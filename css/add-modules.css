@@ -45,6 +45,14 @@ body {
 }
 
 .module-name {
+    padding: 15px;
+}
+.module-row {
+    padding: 0px;
+    margin: 10px 0;
+}
+
+.module-name {
     justify-content: space-between; /* Space out the module name and inputs */
 }
 
@@ -55,7 +63,7 @@ body {
     box-shadow: none; 
     width: auto;
     flex: 1;
-    margin: 0 5px;
+    margin: auto;
     padding: 10px; 
     border: none;
 }
@@ -73,12 +81,13 @@ body {
 }
 
 .calculate-button {
-    width: 100%;
-    margin-top: auto; /* Push to the bottom */
+    width: 75%;
+    /* margin-top: auto; Pushes it to the bottom */
+    margin: auto;
 }
 
 .calculate-button button {
-    width: 90%; /* Slightly smaller width for the button */
+    width: 100%;
     background-color: #def1fd;
     color: black;
     border-radius: 20px;
