@@ -35,9 +35,16 @@ function createModuleElement(moduleName) {
     const moduleElement = document.createElement('div');
     moduleElement.className = 'module';
 
+    // Create a container for the titles, but don't add content yet
+    const headerRow = document.createElement('div');
+    headerRow.className = 'module-row header-row';
+
     const moduleSections = document.createElement('div');
     moduleSections.className = 'module-sections';
     moduleSections.style.display = 'none';
+
+    // Append headerRow to moduleSections, but it's empty initially
+    moduleSections.appendChild(headerRow);
 
     const moduleHeader = document.createElement('div');
     moduleHeader.className = 'module-name';
@@ -50,11 +57,23 @@ function createModuleElement(moduleName) {
     const addSectionButton = createAddSectionButton();
     addSectionButton.style.display = 'none'; // The button is hidden by default
     addSectionButton.onclick = function() {
+        // If it's the first section, add the titles
+        if (moduleSections.getElementsByClassName('section').length === 0) {
+            addSectionTitles(headerRow); // Now we pass the headerRow to add titles
+        }
         addSection(moduleSections);
     };
     moduleElement.appendChild(addSectionButton);
 
     return moduleElement;
+}
+
+function addSectionTitles(headerRow) {
+    headerRow.innerHTML = `
+        <div class="title">Name</div>
+        <div class="title">Grade</div>
+        <div class="title">Weight</div>
+    `;
 }
 
 function createAddSectionButton() {
@@ -64,8 +83,20 @@ function createAddSectionButton() {
     return button;
 }
 
+function addSectionTitles(headerRow) {
+    headerRow.innerHTML = `
+        <div class="titleSpace"></div>
+        <div class="title">Grade</div>
+        <div class="title">Weight</div>
+    `;
+  }
+
+  
 function addSection(moduleSectionsDiv) {
-    // Your existing logic for creating a new section
+    
+    if (moduleSectionsDiv.children.length === 0) {
+        addSectionTitles(moduleSectionsDiv);
+    }
     const sectionHTML = `
         <div class="section">
             <div class="module-row">
