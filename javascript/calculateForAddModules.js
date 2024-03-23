@@ -28,22 +28,28 @@ document.addEventListener('DOMContentLoaded', function() {
 function gatherModulesData() {
     var modules = [];
     var isInvalidInputFound = false;
-    var isAtLeastOneSectionAdded = false;
 
     document.querySelectorAll('.module').forEach(function(moduleElement) {
-        var moduleNameElement = moduleElement.querySelector('.module-name input');
-        var moduleName = moduleNameElement ? moduleNameElement.value.trim() : '';
+        var moduleNameInput = moduleElement.querySelector('.module-name input');
+        var moduleName = moduleNameInput ? moduleNameInput.value.trim() : '';
         var sections = [];
 
-        moduleElement.querySelectorAll('.section').forEach(function(sectionElement) {
-            isAtLeastOneSectionAdded = true; // Set to true as soon as we find one section
+        if (moduleName === '') {
+            // Add validation error if module name is empty
+            moduleNameInput.classList.add('error');
+            isInvalidInputFound = true;
+        } else {
+            moduleNameInput.classList.remove('error');
+        }
 
+        moduleElement.querySelectorAll('.section').forEach(function(sectionElement) {
             var gradeInput = sectionElement.querySelector('.module-grade-current input');
             var weightInput = sectionElement.querySelector('.module-grade-weight input');
             var grade = gradeInput ? gradeInput.value.trim() : '';
             var weight = weightInput ? weightInput.value.trim() : '';
 
             if (!grade || !weight) {
+                // Check for empty grade or weight and add error class if found
                 isInvalidInputFound = true;
                 gradeInput.classList.add('error');
                 weightInput.classList.add('error');
@@ -59,14 +65,14 @@ function gatherModulesData() {
         }
     });
 
-    // If no sections have been added or there's an invalid input, display an error
-    if (!isAtLeastOneSectionAdded || isInvalidInputFound) {
-        alert("Please add at least one section with valid grades and weights for each module.");
-        return null;
+    if (isInvalidInputFound) {
+        alert("Please fill out all name, grade, and weight fields.");
+        return null; // Returns null to indicate an invalid state
     }
 
     return modules;
 }
+
 
 
 
