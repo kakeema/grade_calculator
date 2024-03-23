@@ -29,6 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    // Event listener for the calculate button
+    const calculateButton = document.querySelector('.calculate-button button');
+    calculateButton.addEventListener('click', function(event) {
+        const isValid = validateModules();
+
+        if (!isValid) {
+            event.preventDefault(); // Stop the form from submitting
+            // You can also display the error message in the DOM instead of using alert
+        }
+        // If isValid is true, the form will submit normally
+    });
 });
 
 function createModuleElement(moduleName) {
@@ -113,4 +124,21 @@ function addSection(moduleSectionsDiv) {
         </div>
     `;
     moduleSectionsDiv.insertAdjacentHTML('beforeend', sectionHTML);
+}
+function validateModules() {
+    const modules = document.querySelectorAll('.module');
+    let allModulesValid = true;
+
+    modules.forEach(module => {
+        const moduleName = module.querySelector('.module-name').textContent;
+        const sections = module.querySelectorAll('.section');
+
+        // Check if the module has at least one section
+        if (sections.length === 0) {
+            allModulesValid = false;
+            alert('Please add at least one section for the module: ' + moduleName);
+        }
+    });
+
+    return allModulesValid;
 }

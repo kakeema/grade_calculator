@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (allAveragesCalculated) {
-                window.location.href = '../pages/results-with-exams.html'; // Adjust the path as necessary
+                window.location.href = '../pages/results.html'; // Adjust the path as necessary
             }
         } else {
             // Prevent navigation if modules data is not valid
