@@ -41,7 +41,7 @@ h1, p {
 }
 
 /* Button styles */
-.sign-up-btn, .continue-guest-btn {
+.sign-up-btn, .continue-guest-btn, .sign-in-btn {
     background-color: #ffffff;
     border: none;
     border-radius: 12px;
@@ -51,10 +51,10 @@ h1, p {
     width: 80%;
     cursor: pointer;
 }
-.sign-up-btn {
+.sign-up-btn, .sign-in-btn {
     color: #7CBAF4;
 }
-.sign-up-btn:hover {
+.sign-up-btn:hover, .sign-in-btn:hover {
     background-color: #e0e0e0; 
 }
 
@@ -70,7 +70,7 @@ h1, p {
 }
 
 
-.continue-guest-btn-link, .signin-btn-link {
+.continue-guest-btn-link, .signin-btn-link, .signin-btn-link {
     text-decoration: none; 
     width: 100%;
 }
