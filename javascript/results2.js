@@ -2,56 +2,53 @@ document.addEventListener('DOMContentLoaded', function() {
     const userModules = JSON.parse(localStorage.getItem('userModules')); // Get the module names
     const modulesData = JSON.parse(localStorage.getItem('modulesData')); // Get the detailed module data
     const moduleBreakdownContainer = document.querySelector('.module-breakdown');
-    const averageGrade = parseFloat(localStorage.getItem('averageGrade'));
+    let totalAverage = 0;
 
     moduleBreakdownContainer.innerHTML = '';
 
-    // Iterate over each module data item to create and append its display
-    modulesData.forEach((module, index) => {
-        // Calculate the average for each module
-        const moduleAverage = calculateModuleWeightedAverage(module);
+    if (userModules.length > 0) {
+        // Calculate and display each module's average
+        const moduleAverages = modulesData.map(module => calculateModuleWeightedAverage(module.sections));
+        const lowestAverage = Math.min(...moduleAverages);
+        totalAverage = moduleAverages.reduce((acc, average, index) => {
+            // Halve the lowest average for the overall calculation
+            return acc + (average === lowestAverage && index === moduleAverages.indexOf(lowestAverage) ? average / 2 : average);
+        }, 0) / userModules.length;
 
-        const moduleDiv = document.createElement('div');
-        moduleDiv.className = 'module';
+        // Display module names and their averages
+        userModules.forEach((moduleName, index) => {
+            const moduleDiv = document.createElement('div');
+            moduleDiv.className = 'module';
 
-        const moduleNameSpan = document.createElement('span');
-        // Use the corresponding name from userModules array
-        moduleNameSpan.textContent = userModules[index];
+            const moduleNameSpan = document.createElement('span');
+            moduleNameSpan.textContent = moduleName;
 
-        const moduleAverageSpan = document.createElement('span');
-        moduleAverageSpan.textContent = moduleAverage !== null ? `${moduleAverage}%` : 'Error';
+            const moduleAverageSpan = document.createElement('span');
+            moduleAverageSpan.textContent = `${moduleAverages[index].toFixed(2)}%`;
 
-        moduleDiv.appendChild(moduleNameSpan);
-        moduleDiv.appendChild(moduleAverageSpan);
+            moduleDiv.appendChild(moduleNameSpan);
+            moduleDiv.appendChild(moduleAverageSpan);
 
-        moduleBreakdownContainer.appendChild(moduleDiv);
-    });
+            moduleBreakdownContainer.appendChild(moduleDiv);
+        });
+    }
 
-    updateCircleProgress(averageGrade);
+    updateCircleProgress(totalAverage.toFixed(2));
 });
 
-function calculateModuleWeightedAverage(module) {
+function calculateModuleWeightedAverage(sections) {
     let weightedSum = 0;
-    let totalWeight = 0;
-
-    // Sum the product of grades and weights for each section
-    module.sections.forEach(function(section) {
-        const grade = parseFloat(section.grade);
-        const weight = parseFloat(section.weight);
-
-        // Sum up the weighted grades and the total weights
-        weightedSum += grade * weight;
-        totalWeight += weight;
-    });
-
-    // Check if total weight is 100 before calculating the average
-    if (totalWeight === 100) {
-        return (weightedSum / totalWeight).toFixed(2); // Return the formatted average
-    } else {
+    let totalWeight = sections.reduce((acc, section) => acc + parseFloat(section.weight), 0);
+    if (totalWeight !== 100) {
         console.error("The weights for the module sections do not add up to 100.");
-        return null; // Return null to indicate an error
+        return null;
     }
+    sections.forEach(section => {
+        weightedSum += parseFloat(section.grade) * parseFloat(section.weight);
+    });
+    return weightedSum / totalWeight;
 }
+
 function updateCircleProgress(averageGrade) {
     const circle = document.querySelector('.progress-ring__circle');
     const radius = circle.r.baseVal.value;
@@ -62,7 +59,7 @@ function updateCircleProgress(averageGrade) {
     circle.style.strokeDashoffset = offset;
 
     const percentageText = document.querySelector('.percentage');
-    percentageText.textContent = `${averageGrade.toFixed(2)}%`;
+    percentageText.textContent = `${averageGrade}%`;
 
     const trackStatus = document.querySelector('.track-status');
     trackStatus.textContent = averageGrade >= 70 ? 'on track' : 'below track';

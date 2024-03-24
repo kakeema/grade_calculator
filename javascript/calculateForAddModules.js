@@ -5,26 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
         clearPreviousData();
         var modules = gatherModulesData();
         if (modules && modules.length > 0) {
-            var grades = modules.map(m => parseFloat(m.sections[0].grade)).sort((a, b) => a - b);
-            var totalValue = grades.reduce((acc, grade, index) => {
-                // Halve the smallest grade (first in the sorted array)
-                return acc + (index === 0 ? grade / 2 : grade);
-            }, 0);
-            var average = totalValue / (grades.length - 0.5); // Adjust for the halved grade
+            var totalAverage = calculateTotalAverage(modules);
 
-            modules.forEach(function(module) {
-                // Store the individual module's average, if needed
-                let average = calculateModuleWeightedAverage(module);
-                if (average !== null) {
-                    localStorage.setItem(module.name + "_average", average);
-                }
-            });
+            if (totalAverage !== null) {
+                // Store the total average and modules in localStorage
+                localStorage.setItem('modulesData', JSON.stringify(modules));
+                localStorage.setItem('averageGrade', totalAverage);
 
-            // Store the total average and modules in localStorage
-            localStorage.setItem('modulesData', JSON.stringify(modules));
-            localStorage.setItem('averageGrade', average.toFixed(2));
-
-            window.location.href = '../pages/results2.html';
+                // Redirects to results2.html
+                window.location.href = '../pages/results2.html';
+            } else {
+                console.log("Error in module data calculation.");
+            }
         } else {
             console.log("Invalid module data, navigation prevented.");
         }
@@ -94,29 +86,55 @@ function gatherModulesData() {
 
     return modules;
 }
-
-
-function calculateModuleWeightedAverage(module) {
+function calculateModuleWeightedAverage(sections) {
     let weightedSum = 0;
     let totalWeight = 0;
 
-    for (const section of module.sections) {
+    for (const section of sections) {
         const grade = parseFloat(section.grade);
         const weight = parseFloat(section.weight);
 
         if (isNaN(grade) || isNaN(weight)) {
-            // If either grade or weight is not a number, return null to stop calculation.
-            return null;
+            console.error("Grade or weight is not a number.");
+            return null; // Return null to indicate an error in calculation
         }
 
         weightedSum += grade * weight;
         totalWeight += weight;
     }
 
-    if (totalWeight !== 100) {
-        alert("Total weight for " + module.name + " does not add up to 100. Please adjust the weights.");
-        return null;
+    // This ensuress the total weight of sections within a module adds up to 100
+    if (totalWeight === 100) {
+        return (weightedSum / totalWeight).toFixed(2); // Returns the average grade for the module, formatted to 2 decimal places
+    } else {
+        console.error("The weights for the module sections do not add up to 100.");
+        return null; // Returns null to indicate an error in total weight
+    }
+}
+
+// This function will calculate the total average of all modules, with the lowest module's average halved.
+function calculateTotalAverage(modules) {
+    let totalAverage = 0;
+    let lowestAverage = Number.MAX_VALUE;
+    let sumAverages = 0;
+    let moduleAverages = []; // Will store the weighted averages for each module
+
+    for (const module of modules) {
+        const average = parseFloat(calculateModuleWeightedAverage(module.sections));
+        if (average === null) return null; // If there's an error, stop calculation
+
+        moduleAverages.push(average);
+        if (average < lowestAverage) {
+            lowestAverage = average; // Keep track of the lowest average
+        }
+        sumAverages += average; // Sum up all averages
     }
 
-    return (weightedSum / totalWeight).toFixed(2);
+    // Subtract the lowest average then add it back halved to get the adjusted sum
+    let adjustedSumAverages = sumAverages - lowestAverage + (lowestAverage / 2);
+
+    // The total average is the adjusted sum divided by the number of modules
+    totalAverage = adjustedSumAverages / modules.length;
+
+    return totalAverage.toFixed(2); // Return the formatted total average
 }
