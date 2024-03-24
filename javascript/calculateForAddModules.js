@@ -1,29 +1,45 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     var calculateButton = document.querySelector('.calculate-button button');
 
     calculateButton.addEventListener('click', function() {
+        clearPreviousData();
         var modules = gatherModulesData();
         if (modules && modules.length > 0) {
-            var allAveragesCalculated = true;
-            modules.forEach(function(module) {
+            var allModulesAverage = modules.map(function(module) {
                 let average = calculateModuleWeightedAverage(module);
                 if (average !== null) {
-                    console.log(module.name + " Module Weighted Average:", average);
-                    localStorage.setItem(module.name + "_average", average);
+                    return { name: module.name, average: average };
                 } else {
-                    allAveragesCalculated = false;
+                    return null; // Indicate an invalid module with a null entry
                 }
-            });
-
+            }).filter(function(module) { return module !== null; }); // Remove invalid modules
+            
+            // Check if all modules are valid
+            var allAveragesCalculated = allModulesAverage.length === modules.length;
+            
             if (allAveragesCalculated) {
-                window.location.href = '../pages/results2.html'; // Adjust the path as necessary
+                // Calculate the overall average here if necessary
+                var totalAverage = allModulesAverage.reduce(function(acc, module) {
+                    return acc + parseFloat(module.average);
+                }, 0) / allModulesAverage.length;
+
+                // Store the modules and total average in localStorage
+                localStorage.setItem('modulesData', JSON.stringify(allModulesAverage));
+                localStorage.setItem('averageGrade', totalAverage.toFixed(2));
+
+                window.location.href = '../pages/results2.html';
             }
         } else {
-            // Prevent navigation if modules data is not valid
             console.log("Invalid module data, navigation prevented.");
         }
     });
 });
+
+function clearPreviousData() {
+    localStorage.removeItem('modulesData');
+    localStorage.removeItem('averageGrade');
+}
 
 function gatherModulesData() {
     var modules = [];
