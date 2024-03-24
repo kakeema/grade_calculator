@@ -6,6 +6,29 @@
     <title>Calculated Grades</title>
     <link rel="stylesheet" type="text/css" href="../css/results.css">
 </head>
+
+<style>
+.module-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.module {
+    flex: 0 1 calc(50% - 10px); 
+    margin-bottom: 20px;
+}
+
+.module span:first-child {
+    display: block; /* This will make the module name appear on its own line */
+}
+
+.module span:last-child {
+    display: block; /* Makes the percentage appear below the module name */
+    text-align: center;
+}
+
+</style>
 <body>
     <div class="results-container">
         <div class="header-container">

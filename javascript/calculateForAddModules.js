@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }).filter(function(module) { return module !== null; }); // Remove invalid modules
             
-            // Check if all modules are valid
+            // This will check if all modules are valid
             var allAveragesCalculated = allModulesAverage.length === modules.length;
             
             if (allAveragesCalculated) {
-                // Calculate the overall average here if necessary
+                // This calculates the overall average here if necessary
                 var totalAverage = allModulesAverage.reduce(function(acc, module) {
                     return acc + parseFloat(module.average);
                 }, 0) / allModulesAverage.length;
