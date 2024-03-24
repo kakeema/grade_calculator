@@ -1,37 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const userModules = JSON.parse(localStorage.getItem('userModules')); // Added line to get module names
-    const modulesData = JSON.parse(localStorage.getItem('modulesData'));
+    const userModules = JSON.parse(localStorage.getItem('userModules')); // Get the module names
+    const modulesData = JSON.parse(localStorage.getItem('modulesData')); // Get the detailed module data
     const moduleBreakdownContainer = document.querySelector('.module-breakdown');
     const averageGrade = parseFloat(localStorage.getItem('averageGrade'));
 
-    // Clear any existing content
     moduleBreakdownContainer.innerHTML = '';
 
-    // Iterate over each module to create and append its display
-    modulesData.forEach((module) => {
+    // Iterate over each module data item to create and append its display
+    modulesData.forEach((module, index) => {
         // Calculate the average for each module
         const moduleAverage = calculateModuleWeightedAverage(module);
 
         const moduleDiv = document.createElement('div');
         moduleDiv.className = 'module';
 
-        // Create a span for the module name
         const moduleNameSpan = document.createElement('span');
-        moduleNameSpan.textContent = module.name;
+        // Use the corresponding name from userModules array
+        moduleNameSpan.textContent = userModules[index];
 
-        // Create a span for the module's average and check for null
         const moduleAverageSpan = document.createElement('span');
         moduleAverageSpan.textContent = moduleAverage !== null ? `${moduleAverage}%` : 'Error';
 
-        // Append spans to the module div
         moduleDiv.appendChild(moduleNameSpan);
         moduleDiv.appendChild(moduleAverageSpan);
 
-        // Append the module div to the container
         moduleBreakdownContainer.appendChild(moduleDiv);
     });
 
-    // Update the progress circle with the average grade
     updateCircleProgress(averageGrade);
 });
 
