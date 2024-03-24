@@ -56,33 +56,39 @@ function gatherModulesData() {
         moduleElement.querySelectorAll('.section').forEach(function(sectionElement) {
             var gradeInput = sectionElement.querySelector('.module-grade-current input');
             var weightInput = sectionElement.querySelector('.module-grade-weight input');
-            var grade = gradeInput ? gradeInput.value.trim() : '';
-            var weight = weightInput ? weightInput.value.trim() : '';
+            var grade = gradeInput ? parseFloat(gradeInput.value.trim()) : null;
+            var weight = weightInput ? parseFloat(weightInput.value.trim()) : null;
 
-            if (!grade || !weight) {
-                // Check for empty grade or weight and add error class if found
+            // Validation for empty inputs or invalid numbers
+            if (grade === null || weight === null || isNaN(grade) || isNaN(weight)) {
+                isInvalidInputFound = true;
+                if (gradeInput) gradeInput.classList.add('error');
+                if (weightInput) weightInput.classList.add('error');
+            } else if (grade > 100) {
+                // Check if grade is above 100 and show error if so
                 isInvalidInputFound = true;
                 gradeInput.classList.add('error');
-                weightInput.classList.add('error');
+                alert('Grade value cannot exceed 100.');
             } else {
-                gradeInput.classList.remove('error');
-                weightInput.classList.remove('error');
+                if (gradeInput) gradeInput.classList.remove('error');
+                if (weightInput) weightInput.classList.remove('error');
                 sections.push({ grade: grade, weight: weight });
             }
         });
 
-        if (sections.length > 0 && moduleName) {
+        if (sections.length > 0 && moduleName && !isInvalidInputFound) {
             modules.push({ name: moduleName, sections: sections });
         }
     });
 
     if (isInvalidInputFound) {
-        alert("Please fill out all name, grade, and weight fields.");
-        return null; // Returns null to indicate an invalid state
+        alert("Please ensure all grades are numbers and do not exceed 100, and fill out all module names.");
+        return null; // null to indicate an invalid state
     }
 
     return modules;
 }
+
 
 function calculateModuleWeightedAverage(module) {
     let weightedSum = 0;
