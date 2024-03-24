@@ -77,6 +77,12 @@ function gatherModulesData() {
         });
 
         if (sections.length > 0 && moduleName && !isInvalidInputFound) {
+            let totalWeight = sections.reduce((acc, section) => acc + section.weight, 0);
+            if (totalWeight !== 100) {
+                alert("Total weight for " + moduleName + " does not add up to 100. Please adjust the weights.");
+                isInvalidInputFound = true;
+                return; // Stop execution here
+            }
             modules.push({ name: moduleName, sections: sections });
         }
     });
