@@ -1,35 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     var calculateButton = document.querySelector('.calculate-button button');
 
     calculateButton.addEventListener('click', function() {
         clearPreviousData();
         var modules = gatherModulesData();
         if (modules && modules.length > 0) {
-            var allModulesAverage = modules.map(function(module) {
+            var grades = modules.map(m => parseFloat(m.sections[0].grade)).sort((a, b) => a - b);
+            var totalValue = grades.reduce((acc, grade, index) => {
+                // Halve the smallest grade (first in the sorted array)
+                return acc + (index === 0 ? grade / 2 : grade);
+            }, 0);
+            var average = totalValue / (grades.length - 0.5); // Adjust for the halved grade
+
+            modules.forEach(function(module) {
+                // Store the individual module's average, if needed
                 let average = calculateModuleWeightedAverage(module);
                 if (average !== null) {
-                    return { name: module.name, average: average };
-                } else {
-                    return null; // Indicate an invalid module with a null entry
+                    localStorage.setItem(module.name + "_average", average);
                 }
-            }).filter(function(module) { return module !== null; }); // Remove invalid modules
-            
-            // This will check if all modules are valid
-            var allAveragesCalculated = allModulesAverage.length === modules.length;
-            
-            if (allAveragesCalculated) {
-                // This calculates the overall average here if necessary
-                var totalAverage = allModulesAverage.reduce(function(acc, module) {
-                    return acc + parseFloat(module.average);
-                }, 0) / allModulesAverage.length;
+            });
 
-                // Store the modules and total average in localStorage
-                localStorage.setItem('modulesData', JSON.stringify(allModulesAverage));
-                localStorage.setItem('averageGrade', totalAverage.toFixed(2));
+            // Store the total average and modules in localStorage
+            localStorage.setItem('modulesData', JSON.stringify(modules));
+            localStorage.setItem('averageGrade', average.toFixed(2));
 
-                window.location.href = '../pages/results2.html';
-            }
+            window.location.href = '../pages/results2.html';
         } else {
             console.log("Invalid module data, navigation prevented.");
         }
@@ -88,9 +83,6 @@ function gatherModulesData() {
 
     return modules;
 }
-
-
-
 
 function calculateModuleWeightedAverage(module) {
     let weightedSum = 0;
