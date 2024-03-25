@@ -75,8 +75,13 @@ function gatherModulesData() {
                 isInvalidInputFound = true;
                 return; // Stop execution here
             }
-            modules.push({ name: moduleName, sections: sections });
-        }
+            let average = calculateModuleWeightedAverage(sections);
+            if(average !== null) {
+                modules.push({ name: moduleName, sections: sections, average: parseFloat(average) });
+            } else {
+                // Handle the error in average calculation if necessary
+                isInvalidInputFound = true;
+            }        }
     });
 
     if (isInvalidInputFound) {
@@ -112,29 +117,34 @@ function calculateModuleWeightedAverage(sections) {
     }
 }
 
-// This function will calculate the total average of all modules, with the lowest module's average halved.
+// This function will calculate the total average of all modules, with the lowest module's weight halved.
 function calculateTotalAverage(modules) {
-    let totalAverage = 0;
-    let lowestAverage = Number.MAX_VALUE;
-    let sumAverages = 0;
-    let moduleAverages = []; // Will store the weighted averages for each module
+    console.log(modules); // Debug: Log the entire modules array
 
-    for (const module of modules) {
-        const average = parseFloat(calculateModuleWeightedAverage(module.sections));
-        if (average === null) return null; // If there's an error, stop calculation
+    const defaultCredits = 30;
+    let totalCredits = modules.length * defaultCredits;
 
-        moduleAverages.push(average);
-        if (average < lowestAverage) {
-            lowestAverage = average; // Keep track of the lowest average
-        }
-        sumAverages += average; // Sum up all averages
+    if (modules.length === 0) {
+        alert("No modules to calculate.");
+        return;
     }
 
-    // Subtract the lowest average then add it back halved to get the adjusted sum
-    let adjustedSumAverages = sumAverages - lowestAverage + (lowestAverage / 2);
+    // Ensure module.average is a number and log if not
+    modules.forEach(module => {
+        if (typeof module.average !== 'number' || isNaN(module.average)) {
+            console.log('Invalid or missing average:', module);
+        }
+    });
 
-    // The total average is the adjusted sum divided by the number of modules
-    totalAverage = adjustedSumAverages / modules.length;
+    let lowestAverage = modules.reduce((lowest, module) => Math.min(lowest, module.average), modules[0].average);
 
-    return totalAverage.toFixed(2); // Return the formatted total average
+    console.log("Lowest average score:", lowestAverage); // Debug: Log the lowest average score
+    alert("Lowest average module score: " + lowestAverage);
 }
+
+
+
+
+
+
+

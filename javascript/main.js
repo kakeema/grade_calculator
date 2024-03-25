@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() { // Event listenr for 
     var addMoreContainer = document.querySelector(".add-more");
     var calculateButton = document.querySelector('.calculate-button button');
     var addModulesButton = document.querySelector('.add-modules-button button'); // This should match the button in your HTML
-    var calculateButtonFromAddModulesPage = document.querySelector('.calculate-button button');
     // Adding the module
     addButton.addEventListener('click', function() { // Event listener for the + add more button, to add modules.
         var html = buttonClicked();
@@ -105,7 +104,7 @@ function calculateAverage() {
         return a - b;
     });
 
-    // Calculate total value, half the smallest grade and full for the other grades.
+    // Calculate total value, half the module that has the smallest grade and full for the other grades.
     var totalValue = grades.reduce(function(acc, grade, index) {
         return acc + (index === 0 ? grade / 2 : grade);
     }, 0);
