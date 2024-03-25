@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calculate and display each module's average
         const moduleAverages = modulesData.map(module => calculateModuleWeightedAverage(module.sections));
         const lowestAverage = Math.min(...moduleAverages);
+        
         totalAverage = moduleAverages.reduce((acc, average, index) => {
             // Halve the lowest average for the overall calculation
-            return acc + (average === lowestAverage && index === moduleAverages.indexOf(lowestAverage) ? average / 2 : average);
+            return acc + (average === lowestAverage && index === moduleAverages.indexOf(lowestAverage) ? average  : average);
         }, 0) / userModules.length;
 
         // Display module names and their averages
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             moduleBreakdownContainer.appendChild(moduleDiv);
         });
     }
+    console.log("Final Total Average for UI:", totalAverage);
 
     updateCircleProgress(totalAverage.toFixed(2));
 });
