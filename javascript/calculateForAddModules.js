@@ -136,13 +136,34 @@ function calculateTotalAverage(modules) {
         return null;
     }
 
-    // Simply sum up all the module averages and divide by the number of modules
-    let sumOfAverages = modules.reduce((acc, module) => acc + module.average, 0);
-    let totalAverage = (sumOfAverages / modules.length).toFixed(2);
+    const lowestAverage = Math.min(...modules.map(module => module.average));
+    const indexLowest = modules.findIndex(module => module.average === lowestAverage);
+    alert('Lowest average module index: ' + indexLowest); // Alert the index of the lowest average
 
-    console.log('Total Average:', totalAverage); // Log the total average for debugging
+    let totalWeightedAverage = 0;
+    let totalCredits = 0;
+
+    modules.forEach((module, index) => {
+        let credits = 30; // Assume each module has 30 credits by default
+        if (index === indexLowest) {
+            credits /= 2; // Halve the credits for the module with the lowest average
+            alert(`Halving credits for module at index ${indexLowest}: ` + module.name);
+        }
+        totalWeightedAverage += module.average * credits;
+        totalCredits += credits;
+        alert(`Module: ${module.name}, Average: ${module.average}, Credits: ${credits}`); // Alert each module's contribution
+    });
+
+    alert('Total Weighted Average: ' + totalWeightedAverage);
+    alert('Total Credits: ' + totalCredits);
+
+    const totalAverage = (totalWeightedAverage / totalCredits).toFixed(2);
+    alert('Total Average: ' + totalAverage); // Alert the total average for debugging
+
     return totalAverage;
 }
+
+
 
 
 
